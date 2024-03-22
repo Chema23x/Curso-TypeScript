@@ -1,0 +1,62 @@
+--- Una vez definida una variable no puede cambiar su tipo de valor
+
+Documentar // @param a {number}
+	      @param b {number}
+
+Proporciona mayor seguridad, robustez y seguridad a cambio de mas código
+
+Todo lo que tiene que ver con tipos desaparece al compilarse el typescript --> const nombre: string = "Miguel"
+	
+Inferencia: Typescript es capaz de observar como es el objeto y decirte su forma como el ejemplo del objeto
+
+Intenta evitar escribir los menos tipos posibles
+
+
+Que pasa cuando no puede inferir el tipo de dato ejemplo:
+
+----ANY
+
+let a  --> dará un tipo any
+
+Al dejar
+
+let anyValue: any = 'hola'  --> le decimos a Typescript que ignore el tipado de typescript, any significa cualquier tipo de dato
+
+----UNKNOWN
+
+No conocemos el tipo de dato
+
+---Para los tipos basicos de datos no se necesita declarar el tipo de dato
+
+La inferencia de typescript tiene un limite ejemplo:
+
+
+function saludar (name){
+ console.log (`Hola ${name}`)
+}
+
+En este ejemplo dará advertencia ya que el parámetro name tendrá valor any para corregir se hace lo siguiente:
+
+function saludar (name:string){
+ console.log (`Hola ${name}`)
+}
+
+
+
+---- Cuidado porque Typescript compila su codigo a JS aun cuando haya anys implicitos ----
+
+2 Formas correcta de tipar las keys de un objeto:
+
+(1) function saludar ({name, age } : {name: string, age: number } : number ){
+ 	console.log(`Hola ${name}, tienes ${age} años`)
+    }
+
+(2) function saludar (persona : {name: string, age: number } ){
+	const { name, age } = persona
+ 	console.log(`Hola ${name}, tienes ${age} años`)
+    }
+
+Para decirle que tipo de valor devuelve se coloca : number/string/etc
+
+
+
